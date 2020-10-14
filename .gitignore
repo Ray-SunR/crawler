@@ -1,0 +1,4 @@
+crawler.egg-info
+crawler.egg-info/*
+dist
+dist/*

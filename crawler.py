@@ -57,9 +57,8 @@ def crawl(base_url):
       if link not in visited:
         queue.put(link)
         visited.add(link)
-  # Uncomment the following lines to dump site_maps to a file
-  # with open('site_maps', 'wb') as f:
-  #   f.write(json.dumps(site_maps, indent=4, default=serialize_sets).encode('utf-8'))
+  with open('site_maps', 'wb') as f:
+    f.write(json.dumps(site_maps, indent=4, default=serialize_sets).encode('utf-8'))
 
 def main():
   base_url = input('Enter url to crawl\n')
@@ -68,7 +67,7 @@ def main():
   print('Crawling completed...')
   while True:
     try:
-      url = input('Enter url to query site maps and static assets...\nPress ctrl-c to quit')
+      url = input('Enter url to query site maps and static assets...\nPress ctrl-c to quit\n')
       if url not in site_maps:
         print(url + ' does not exist in ' + base_url)
       else:
@@ -78,4 +77,5 @@ def main():
       print('quiting...')
       sys.exit(1)
 
-main()
+if __name__ == '__main__':
+  main()
